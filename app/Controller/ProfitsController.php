@@ -13,5 +13,16 @@ class ProfitsController extends AppController {
 
 		$this->set('profit', $this->Profit->findById($id));
 	}
+	
+	public function add() {
+		if ($this->request->is('post')) {
+			$this->Profit->create();
+
+			if($this->Profit->save($this->request->data)) {
+				$this->Flash->success('売上金額を登録しました');
+				return $this->redirect(['action' => 'index']);
+			}
+		}
+	}
 
 } 
