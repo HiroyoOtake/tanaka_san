@@ -19,3 +19,7 @@ INSERT INTO `profits` (`earnings`, `cost`, `profit`, `created`, `updated`) VALUE
 INSERT INTO `profits` (`earnings`, `cost`, `profit`, `created`, `updated`) VALUES (15000, 3000, 12000, now(), now());
 INSERT INTO `profits` (`earnings`, `cost`, `profit`, `created`, `updated`) VALUES (8000, 1500, 6500, now(), now());
 INSERT INTO `profits` (`earnings`, `cost`, `profit`, `created`, `updated`) VALUES (40000, 8000, 32000, now(), now());
+
+//追加分
+ALTER TABLE profits ADD date DATE;
+alter table profits modify date DATE after profit;

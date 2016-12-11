@@ -1,8 +1,3 @@
-<!-- <div style="width: 100%; height: 80px;"> -->
-    <!-- <span style="float: left;"><h2><?= $shop['Shop']['name']; ?></h2></span> -->
-<!--     <span style="float: right;"><h3><?= $shop['Shop']['tel']; ?></h3></span> -->
-<!-- </div> -->
-
 <div>
     <h2>利益詳細</h2>
     <table>
