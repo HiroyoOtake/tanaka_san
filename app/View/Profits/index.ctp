@@ -1,5 +1,7 @@
 <h2>利益一覧</h2>
-
+<?= $test ?>
+<?= $this->Html->link( 'テストリンク', [ 'controller' => 'users', 'action' => 'abs','123','456' ]
+); ?>円
 <table>
 	<tbody>
 		<tr>
@@ -24,7 +26,7 @@
 				<td style="width:24%;">
 					<?= $this->Html->link(
 						$profit['Profit']['profit'],
-						['action' => 'view',$profit['Profit']['id']]
+						[ 'action' => 'view',$profit['Profit']['id']]
 					); ?>円
 				</td>
 				<td style="width:24%;">
@@ -40,10 +42,13 @@
 					); ?>円
 				</td>
 				<td style="width:20%;">
-					<?= $this->Time->format($profit['Profit']['created'], '%Y/%m/%D'); ?>
+					<?= $this->Time->format($profit['Profit']['created'], '%Y/%m/%d'); ?>
+<br>
+<br>
+					<?= $this->Time->format('2016-12-11 17:02:00','%H:%M'); ?>
 				</td>
 				<td style="width:20%;">
-					<?= $this->Time->format($profit['Profit']['updated'], '%Y/%m/%D'); ?>
+					<?= $this->Time->format($profit['Profit']['updated'], '%Y/%m/%d'); ?>
 				</td>
 			</tr>
 		<?php endforeach; ?>
