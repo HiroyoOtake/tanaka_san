@@ -2,6 +2,6 @@
 
 <div>
     <?= $this->Form->create('Profit'); ?>
-    <?= $this->Form->input('earnings', ['label' => false]); ?>
+    <?= $this->Form->input('earnings', ['label' => false, 'required' => false,]); ?>
     <?= $this->Form->end('登録する'); ?>
 </div>

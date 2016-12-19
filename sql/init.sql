@@ -2,6 +2,7 @@ CREATE DATABASE `tanaka_san`;
 
 use tanaka_san;
 
+/* profits */
 CREATE TABLE `profits` (
 	  `id` int(11) NOT NULL,
 	  `earnings` varchar(100),
@@ -23,3 +24,7 @@ INSERT INTO `profits` (`earnings`, `cost`, `profit`, `created`, `updated`) VALUE
 //追加分
 ALTER TABLE profits ADD date DATE;
 alter table profits modify date DATE after profit;
+
+
+/* cost */
+create table costs (id int primary key auto_increment,profit_id int,item varchar(32),price int);

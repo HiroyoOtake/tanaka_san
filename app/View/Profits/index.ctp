@@ -21,21 +21,18 @@
 					<?= $this->Time->format($profit['Profit']['date'], '%Y/%m/%d'); ?>
 				</td>
 				<td style="width:30%;">
-					<?= $this->Html->link(
-						$profit['Profit']['profit'],
-						[ 'action' => 'view',$profit['Profit']['id']]
-					); ?>円
+					<?= $profit['Profit']['earnings'] - $profit['Profit']['cost']; ?>円
 				</td>
 				<td style="width:30%;">
-					<?= $this->Html->link(
+					<?=  $this->Html->link(
 						$profit['Profit']['earnings'],
 						['action' => 'view',$profit['Profit']['id']]
 					); ?>円
 				</td>
 				<td style="width:30%;">
-					<?= $this->Html->link(
+					<?=  $this->Html->link(
 						$profit['Profit']['cost'],
-						['action' => 'view',$profit['Profit']['id']]
+						['action' => 'add_cost']
 					); ?>円
 				</td>
 			</tr>
