@@ -1,6 +1,12 @@
 <?php
 
 class Cost extends AppModel {
+	public $belongsTo = [
+		'Profit' => [
+			'foreignKey' => 'profit_id',
+		]
+	];
+
 	public $validate = [
 		'item' => [
 			[

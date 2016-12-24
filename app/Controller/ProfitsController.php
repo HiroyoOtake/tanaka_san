@@ -1,9 +1,9 @@
 <?php
 
 class ProfitsController extends AppController {
+	public $uses = ['Profit','Cost'];
 
 	public function index() {
-		$this->Profit->create(); //insurtの準備
 		$this->set('profits', $this->Profit->find('all'));
 	}
 	
@@ -68,12 +68,14 @@ class ProfitsController extends AppController {
 		}
 	}
 
-	public function add_cost_breakdown() {
-		if ($this->request->is('post')) {
+	public function add_cost_breakdown($id) {
+		$this->request->data['Cost']['profit_id'] = $id;
 
+		if ($this->request->is('post')) {
 			$breakdown = $this->request->data;
 
-			$this->Profit->create(); 
+
+			$this->Cost->create(); 
 			$result = $this->Cost->save($breakdown); 
 
 			if($result) { 			
@@ -83,4 +85,34 @@ class ProfitsController extends AppController {
 			}  
 		}
 	} 
+
+	public function breakdown_list($id = null) {
+		if (!$this->Profit->exists($id)) {
+			throw new NotFoundException('内訳の情報が見つかりません。');
+		}
+		
+		$breakdown = $this->Cost->find('all', [
+			'conditions' => [
+			      'profit_id' => $id,
+			      ]
+			]);
+		
+		$this->set('costs', $breakdown);
+	}
+
+	public function delete($id) {
+		if (!$this->Profit->exists($id)) {
+			throw new NotFoundException ('利益の情報が見つかりません。');
+		}
+
+		$this->request->allowMethod('post','delete');
+
+		if ($this->Profit->delete($id)) {
+			$this->Flash->success('利益のデータを削除しました。');
+		} else {
+			$this->Flash->error('利益のデータを削除しました');
+		}
+
+		return $this->redirect(['action' => 'index']);
+	}
 } 
